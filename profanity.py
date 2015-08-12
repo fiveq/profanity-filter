@@ -50,7 +50,7 @@ def profanityScore(text):
 
     #utilities.prettyPrintDict(profane_words_transpose)
 
-    words = [w.strip('-').strip('.').translate(None, string.digits) for w in text.lower().split()]
+    words = [w.strip('*').strip('-').strip('.').translate(None, string.digits) for w in text.lower().split()]
 
     score = 0.0
     words_count = defaultdict(int)
