@@ -12,6 +12,7 @@
 import string
 from collections import defaultdict
 import json
+import os
 
 import utilities
 
@@ -35,10 +36,13 @@ def profanityScore(text):
     for the text of string
     """
 
-    profane_word_weights = utilities.readPropertiesFile('profane_words.txt', 'int')
+    profane_word_weights = utilities.readPropertiesFile(
+        os.path.join(os.path.dirname(__file__), 'profane_words.txt'), 'int')
+
     profane_words = profane_word_weights.keys()
 
-    words_dict = utilities.readPropertiesFile('dict_words.txt', 'list')
+    words_dict = utilities.readPropertiesFile(
+        os.path.join(os.path.dirname(__file__), 'dict_words.txt'), 'list')
 
     profane_words_transpose = {}
     for w in profane_words:
