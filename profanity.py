@@ -56,23 +56,24 @@ def profanityScore(text):
     words_count = defaultdict(int)
 
     for w in words:
-        inDict = w in words_dict[w[0]]
+	if w:
+            inDict = w in words_dict[w[0]]
 
-        w = utilities.rot13(w)
+            w = utilities.rot13(w)
 
-        # If the exact word appears in the list of profane words
-        if w in profane_words:
-            words_count[w] += 1
+            # If the exact word appears in the list of profane words
+            if w in profane_words:
+                words_count[w] += 1
 
-        # Check if the word is a transpose of the profane words
-        for pw in profane_words_transpose.keys():
-            if w in profane_words_transpose[pw]:
-                words_count[pw] += 1
+            # Check if the word is a transpose of the profane words
+            for pw in profane_words_transpose.keys():
+                if w in profane_words_transpose[pw]:
+                    words_count[pw] += 1
 
-        # Check if profane words is a substring of the word
-        for pw in profane_words:
-            if w.find(pw) != -1 and not inDict:
-                words_count[pw] += 1
+            # Check if profane words is a substring of the word
+            for pw in profane_words:
+                if w.find(pw) != -1 and not inDict:
+                    words_count[pw] += 1
 
 
     # Take words GROUP_SIZE at a time and see if they either form a
