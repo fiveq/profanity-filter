@@ -71,9 +71,9 @@ def profanityScore(text):
                     words_count[pw] += 1
 
             # Check if profane words is a substring of the word
-            for pw in profane_words:
-                if w.find(pw) != -1 and not inDict:
-                    words_count[pw] += 1
+            #for pw in profane_words:
+            #    if w.find(pw) != -1 and not inDict:
+            #        words_count[pw] += 1
 
 
     # Take words GROUP_SIZE at a time and see if they either form a
