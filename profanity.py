@@ -13,6 +13,7 @@ import string
 from collections import defaultdict
 import json
 import os
+import re
 
 import utilities
 
@@ -48,11 +49,9 @@ def profanityScore(text):
     for w in profane_words:
         profane_words_transpose[w] = getTransposedWords(w)
 
-    #utilities.prettyPrintDict(profane_words_transpose)
-
-    words = [w.strip('*').strip('-').strip('.').translate(None, string.digits) for w in text.lower().split()]
-
-    score = 0.0
+    text = re.sub(r'[\d+\W+]', ' ', text) 
+    words = [w.rstrip('.') for w in text.lower().split()] 
+    score = 0.0 
     words_count = defaultdict(int)
 
     for w in words:
